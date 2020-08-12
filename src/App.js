@@ -1,26 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import AppTopBar from './components/AppTopBar'
+import { AppProvider } from '@shopify/polaris'
+import enTranslations from '@shopify/polaris/locales/en.json';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const theme = {
+    colors: {
+        topBar: {
+            background: '#357997',
+        },
+    },
+    logo: {
+        width: 124,
+        topBarSource:
+          'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
+        url: 'http://jadedpixel.com',
+        accessibilityLabel: 'Jaded Pixel',
+    },
+};
+
+function App()
+{
+    return (
+      <AppProvider
+        theme={theme}
+        i18n={enTranslations}
+      >
+          <AppTopBar/>
+      </AppProvider>
+
+    );
 }
 
 export default App;
