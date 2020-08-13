@@ -1,13 +1,30 @@
-import React, { useCallback, useState } from 'react';
-import { ActionList, Card, Frame, Icon, TopBar, VisuallyHidden } from '@shopify/polaris';
-import { ArrowLeftMinor, QuestionMarkMajorTwotone } from '@shopify/polaris-icons';
+import React, { useCallback, useRef, useState } from 'react';
+import {
+    ActionList,
+    Card, Frame,
+    Icon,
+    Loading,
+    Navigation,
+    TopBar,
+    VisuallyHidden
+} from '@shopify/polaris';
+import {
+    ArrowLeftMinor,
+    HashtagMajorMonotone,
+    HomeMajorMonotone,
+    QuestionMarkMajorTwotone
+} from '@shopify/polaris-icons';
 
 const AppTopBar = () =>
 {
+    const skipToContentRef = useRef(null);
+
     const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
     const [isSecondaryMenuOpen, setIsSecondaryMenuOpen] = useState(false);
     const [isSearchActive, setIsSearchActive] = useState(false);
     const [searchValue, setSearchValue] = useState('');
+    const [isLoading] = useState(false);
+    const [mobileNavigationActive, setMobileNavigationActive] = useState(false);
 
     const toggleIsUserMenuOpen = useCallback(
       () => setIsUserMenuOpen((isUserMenuOpen) => !isUserMenuOpen),
@@ -16,6 +33,14 @@ const AppTopBar = () =>
 
     const toggleIsSecondaryMenuOpen = useCallback(
       () => setIsSecondaryMenuOpen((isSecondaryMenuOpen) => !isSecondaryMenuOpen),
+      [],
+    );
+
+    const toggleMobileNavigationActive = useCallback(
+      () =>
+        setMobileNavigationActive(
+          (mobileNavigationActive) => !mobileNavigationActive,
+        ),
       [],
     );
 
@@ -30,13 +55,6 @@ const AppTopBar = () =>
         setSearchValue(value);
         setIsSearchActive(value.length > 0);
     }, []);
-
-    const handleNavigationToggle = useCallback(() =>
-    {
-        console.log('toggle navigation visibility');
-    }, []);
-
-
 
     const userMenuMarkup = (
       <TopBar.UserMenu
@@ -95,6 +113,38 @@ const AppTopBar = () =>
       />
     );
 
+    const navigationMarkup = (
+      <Navigation location="/">
+          <Navigation.Section
+            items={[
+                {
+                    url: '/',
+                    label: 'Home',
+                    icon: HomeMajorMonotone,
+                },
+            ]}
+          />
+
+          <Navigation.Section
+            separator
+            items={[
+                {
+                    url: '/label/laravel',
+                    label: 'Laravel',
+                    icon: HashtagMajorMonotone,
+                    badge: '15',
+                },
+                {
+                    url: '/label/javascript',
+                    label: 'Javascript',
+                    icon: HashtagMajorMonotone,
+                    badge: '22',
+                },
+            ]}
+          />
+      </Navigation>
+    );
+
     const topBarMarkup = (
       <TopBar
         showNavigationToggle
@@ -104,12 +154,22 @@ const AppTopBar = () =>
         searchField={searchFieldMarkup}
         searchResults={searchResultsMarkup}
         onSearchResultsDismiss={handleSearchResultsDismiss}
-        onNavigationToggle={handleNavigationToggle}
+        onNavigationToggle={toggleMobileNavigationActive}
       />
     );
 
+    const loadingMarkup = isLoading ? <Loading/> : null;
+
     return (
-      <Frame topBar={topBarMarkup}/>
+      <Frame
+        topBar={topBarMarkup}
+        navigation={navigationMarkup}
+        showMobileNavigation={mobileNavigationActive}
+        onNavigationDismiss={toggleMobileNavigationActive}
+        skipToContentTarget={skipToContentRef.current}
+      >
+          {loadingMarkup}
+      </Frame>
     );
 }
 
