@@ -14,6 +14,7 @@ import {
     HomeMajorMonotone,
     QuestionMarkMajorTwotone
 } from '@shopify/polaris-icons';
+import Router from '../router'
 
 const AppTopBar = () =>
 {
@@ -118,8 +119,8 @@ const AppTopBar = () =>
           <Navigation.Section
             items={[
                 {
-                    url: '/',
-                    label: 'Home',
+                    url: '../',
+                    label: 'Notes',
                     icon: HomeMajorMonotone,
                 },
             ]}
@@ -158,7 +159,7 @@ const AppTopBar = () =>
       />
     );
 
-    const loadingMarkup = isLoading ? <Loading/> : null;
+    const loadingMarkup = isLoading ? <Loading/> : 'asdasdas';
 
     return (
       <Frame
@@ -169,6 +170,7 @@ const AppTopBar = () =>
         skipToContentTarget={skipToContentRef.current}
       >
           {loadingMarkup}
+          <Router/>
       </Frame>
     );
 }

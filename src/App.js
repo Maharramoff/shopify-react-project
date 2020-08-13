@@ -3,6 +3,7 @@ import AppTopBar from './components/AppTopBar'
 import { AppProvider } from '@shopify/polaris'
 import enTranslations from '@shopify/polaris/locales/en.json';
 import theme from './settings/theme'
+import { BrowserRouter } from 'react-router-dom'
 
 function App()
 {
@@ -11,9 +12,10 @@ function App()
         theme={theme}
         i18n={enTranslations}
       >
-          <AppTopBar/>
+          <BrowserRouter>
+              <AppTopBar/>
+          </BrowserRouter>
       </AppProvider>
-
     );
 }
 
