@@ -1,5 +1,5 @@
 import React from 'react';
-import AppTopBar from './components/AppTopBar'
+import AppTopBar from './AppTopBar'
 import { AppProvider } from '@shopify/polaris'
 import enTranslations from '@shopify/polaris/locales/en.json';
 import theme from './settings/theme'

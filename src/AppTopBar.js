@@ -14,7 +14,7 @@ import {
     HomeMajorMonotone,
     QuestionMarkMajorTwotone
 } from '@shopify/polaris-icons';
-import Router from '../router'
+import Router from './router'
 
 const AppTopBar = () =>
 {
