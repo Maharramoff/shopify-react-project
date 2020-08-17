@@ -1,43 +1,133 @@
-import React, { Component } from 'react';
-import { Card, List, Page, Stack } from '@shopify/polaris'
+import React, { useCallback, useState } from 'react';
+import { Card, ChoiceList, Heading, Layout, OptionList, Page, Stack, Tag, TextContainer } from '@shopify/polaris'
+import { useParams } from 'react-router-dom'
 
-class Label extends Component
+const Label = () =>
 {
-    render()
-    {
-        let hashtag = this.props.match.params.hashtag;
+    const [selected, setSelected] = useState([]);
+    const { hashtag } = useParams();
+    const handleChange = useCallback((value) => setSelected(value), []);
 
-        return (
-          <Page>
-              <Stack distribution="fill">
-                  <Card title={hashtag} sectioned>
-                      <List>
-                          <List.Item>Felix Crafford</List.Item>
-                          <List.Item>Ezequiel Manno</List.Item>
-                      </List>
-                  </Card>
-                  <Card title={hashtag} sectioned>
-                      <List>
-                          <List.Item>Felix Crafford</List.Item>
-                          <List.Item>Ezequiel Manno</List.Item>
-                      </List>
-                  </Card>
-                  <Card title={hashtag} sectioned>
-                      <List>
-                          <List.Item>Felix Crafford</List.Item>
-                          <List.Item>Ezequiel Manno</List.Item>
-                      </List>
-                  </Card>
-                  <Card title={hashtag} sectioned>
-                      <List>
-                          <List.Item>Felix Crafford</List.Item>
-                          <List.Item>Ezequiel Manno</List.Item>
-                      </List>
-                  </Card>
-              </Stack>
-          </Page>
-        );
+    const removeTag = (tag) =>
+    {
+        console.log(tag);
     }
+
+    const tagsMarkup = (tagLabel) =>
+    {
+        tagLabel = titleCase(tagLabel);
+        return (
+          <Tag onRemove={removeTag(tagLabel)}>
+              {tagLabel}
+          </Tag>
+        );
+    };
+
+    const titleCase = str =>
+    {
+        return str
+          .toLowerCase()
+          .split(' ')
+          .map((word) => word.replace(word[0], word[0].toUpperCase()))
+          .join('');
+    }
+
+    return (
+      <Page fullWidth>
+          <Layout>
+              <Layout.Section oneThird>
+                  <Card title={hashtag}>
+                      <Card.Section>
+                          <ChoiceList
+                            allowMultiple
+                            choices={[
+                                {
+                                    label: 'Use the shipping address as the billing address by default',
+                                    value: 'shipping',
+                                },
+                                {
+                                    label: 'Require a confirmation step',
+                                    value: 'confirmation',
+                                },
+                            ]}
+                            selected={selected}
+                            onChange={handleChange}
+                            title=""/>
+                      </Card.Section>
+
+                      <Card.Section subdued>
+                          <Stack>
+                              {tagsMarkup('demo')}
+                              {tagsMarkup('demo')}
+                          </Stack>
+                      </Card.Section>
+                  </Card>
+              </Layout.Section>
+              <Layout.Section oneThird>
+                  <Card title={hashtag}>
+                      <Card.Section>
+                          <Stack>
+                              <ChoiceList
+                                allowMultiple
+                                choices={[
+                                    {
+                                        label: 'Use the shipping address as the billing address by default',
+                                        value: 'shipping',
+                                    },
+                                    {
+                                        label: 'Require a confirmation step',
+                                        value: 'confirmation',
+                                    },
+                                ]}
+                                selected={selected}
+                                onChange={handleChange}
+                                title=""/>
+                          </Stack>
+
+                      </Card.Section>
+
+                      <Card.Section subdued>
+                          <Stack>
+                              {tagsMarkup('demo')}
+                              {tagsMarkup('demo')}
+                          </Stack>
+                      </Card.Section>
+                  </Card>
+              </Layout.Section>
+              <Layout.Section oneThird>
+                  <Card title={hashtag}>
+                      <Card.Section>
+                          <Stack>
+                              <ChoiceList
+                                allowMultiple
+                                choices={[
+                                    {
+                                        label: 'Use the shipping address as the billing address by default',
+                                        value: 'shipping',
+                                    },
+                                    {
+                                        label: 'Require a confirmation step',
+                                        value: 'confirmation',
+                                    },
+                                ]}
+                                selected={selected}
+                                onChange={handleChange}
+                                title=""/>
+                          </Stack>
+
+                      </Card.Section>
+
+                      <Card.Section subdued>
+                          <Stack>
+                              {tagsMarkup('demo')}
+                              {tagsMarkup('demo')}
+                          </Stack>
+                      </Card.Section>
+                  </Card>
+              </Layout.Section>
+          </Layout>
+      </Page>
+    );
 }
 
 export default Label;

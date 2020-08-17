@@ -6,7 +6,9 @@ import Label from './Label'
 const Router = () => (
   <Switch>
       <Route exact path="/" component={Home}/>
-      <Route exact path="/label/:hashtag" component={Label}/>
+      <Route exact path="/label/:hashtag">
+          <Label/>
+      </Route>
   </Switch>
 );
 
