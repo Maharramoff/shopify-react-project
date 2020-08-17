@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Card, List, Page, Stack } from '@shopify/polaris'
 
 class Label extends Component
 {
@@ -7,9 +8,34 @@ class Label extends Component
         let hashtag = this.props.match.params.hashtag;
 
         return (
-          <div>
-              {hashtag}
-          </div>
+          <Page>
+              <Stack distribution="fill">
+                  <Card title={hashtag} sectioned>
+                      <List>
+                          <List.Item>Felix Crafford</List.Item>
+                          <List.Item>Ezequiel Manno</List.Item>
+                      </List>
+                  </Card>
+                  <Card title={hashtag} sectioned>
+                      <List>
+                          <List.Item>Felix Crafford</List.Item>
+                          <List.Item>Ezequiel Manno</List.Item>
+                      </List>
+                  </Card>
+                  <Card title={hashtag} sectioned>
+                      <List>
+                          <List.Item>Felix Crafford</List.Item>
+                          <List.Item>Ezequiel Manno</List.Item>
+                      </List>
+                  </Card>
+                  <Card title={hashtag} sectioned>
+                      <List>
+                          <List.Item>Felix Crafford</List.Item>
+                          <List.Item>Ezequiel Manno</List.Item>
+                      </List>
+                  </Card>
+              </Stack>
+          </Page>
         );
     }
 }
