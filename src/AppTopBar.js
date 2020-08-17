@@ -1,9 +1,9 @@
 import React, { useCallback, useRef, useState } from 'react';
 import {
     ActionList,
-    Card, Frame,
+    Card,
+    Frame,
     Icon,
-    Loading,
     Navigation,
     TopBar,
     VisuallyHidden
@@ -24,7 +24,6 @@ const AppTopBar = () =>
     const [isSecondaryMenuOpen, setIsSecondaryMenuOpen] = useState(false);
     const [isSearchActive, setIsSearchActive] = useState(false);
     const [searchValue, setSearchValue] = useState('');
-    const [isLoading] = useState(false);
     const [mobileNavigationActive, setMobileNavigationActive] = useState(false);
 
     const toggleIsUserMenuOpen = useCallback(
@@ -159,8 +158,6 @@ const AppTopBar = () =>
       />
     );
 
-    const loadingMarkup = isLoading ? <Loading/> : 'asdasdas';
-
     return (
       <Frame
         topBar={topBarMarkup}
@@ -169,7 +166,6 @@ const AppTopBar = () =>
         onNavigationDismiss={toggleMobileNavigationActive}
         skipToContentTarget={skipToContentRef.current}
       >
-          {loadingMarkup}
           <Router/>
       </Frame>
     );
