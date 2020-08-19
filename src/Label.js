@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
-import { Card, ChoiceList, Heading, Layout, OptionList, Page, Stack, Tag, TextContainer } from '@shopify/polaris'
+import { Card, ChoiceList, Heading, Icon, Layout, OptionList, Page, Stack, Tag, TextContainer } from '@shopify/polaris'
 import { useParams } from 'react-router-dom'
+import { CancelSmallMinor } from '@shopify/polaris-icons'
 
 const Label = () =>
 {
@@ -17,7 +18,7 @@ const Label = () =>
     {
         tagLabel = titleCase(tagLabel);
         return (
-          <Tag onRemove={removeTag(tagLabel)}>
+          <Tag key={`option${tagLabel}`} onRemove={removeTag(tagLabel)} onClick={() => {}}>
               {tagLabel}
           </Tag>
         );
@@ -56,7 +57,7 @@ const Label = () =>
                       </Card.Section>
 
                       <Card.Section subdued>
-                          <Stack>
+                          <Stack alignment="baseline">
                               {tagsMarkup('demo')}
                               {tagsMarkup('demo')}
                           </Stack>
