@@ -12,7 +12,7 @@ import {
     ArrowLeftMinor,
     HashtagMajorMonotone,
     HomeMajorMonotone,
-    QuestionMarkMajorTwotone
+    QuestionMarkMajorTwotone, SettingsMajorMonotone
 } from '@shopify/polaris-icons';
 import Router from './router'
 
@@ -66,9 +66,9 @@ const AppTopBar = () =>
                 items: [{ content: 'Community forums' }],
             },
         ]}
-        name="Dharma"
-        detail="Jaded Pixel"
-        initials="D"
+        name="Maharramov"
+        detail="Software Engineer"
+        initials="M"
         open={isUserMenuOpen}
         onToggle={toggleIsUserMenuOpen}
       />
@@ -98,7 +98,7 @@ const AppTopBar = () =>
       <TopBar.Menu
         activatorContent={
             <span>
-          <Icon source={QuestionMarkMajorTwotone}/>
+          <Icon source={SettingsMajorMonotone}/>
           <VisuallyHidden>Secondary menu</VisuallyHidden>
         </span>
         }
