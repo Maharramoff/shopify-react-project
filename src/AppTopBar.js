@@ -9,10 +9,9 @@ import {
     VisuallyHidden
 } from '@shopify/polaris';
 import {
-    ArrowLeftMinor,
     HashtagMajorMonotone,
-    HomeMajorMonotone,
-    QuestionMarkMajorTwotone, SettingsMajorMonotone
+    HomeMajorMonotone, LogOutMinor,
+    SettingsMajorMonotone
 } from '@shopify/polaris-icons';
 import Router from './router'
 
@@ -60,10 +59,7 @@ const AppTopBar = () =>
       <TopBar.UserMenu
         actions={[
             {
-                items: [{ content: 'Back to Shopify', icon: ArrowLeftMinor }],
-            },
-            {
-                items: [{ content: 'Community forums' }],
+                items: [{ content: 'Log out', icon: LogOutMinor }],
             },
         ]}
         name="Maharramov"
@@ -107,7 +103,7 @@ const AppTopBar = () =>
         onClose={toggleIsSecondaryMenuOpen}
         actions={[
             {
-                items: [{ content: 'Community forums' }],
+                items: [{ content: 'Settings' }],
             },
         ]}
       />

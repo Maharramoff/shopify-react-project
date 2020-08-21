@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from 'react';
-import { Card, ChoiceList, Heading, Icon, Layout, OptionList, Page, Stack, Tag, TextContainer } from '@shopify/polaris'
+import { Card, ChoiceList, Layout, Page, Stack, Tag } from '@shopify/polaris'
 import { useParams } from 'react-router-dom'
-import { CancelSmallMinor } from '@shopify/polaris-icons'
 
 const Label = () =>
 {
