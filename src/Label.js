@@ -17,7 +17,9 @@ const Label = () =>
     {
         tagLabel = titleCase(tagLabel);
         return (
-          <Tag key={`option${tagLabel}`} onRemove={removeTag(tagLabel)} onClick={() => {}}>
+          <Tag
+            onRemove={() => {removeTag(tagLabel)}}
+          >
               {tagLabel}
           </Tag>
         );
