@@ -8,7 +8,7 @@ exports.notesAll = async (req, res) => {
       .select('*') // select all records
       .from('notes') // from 'notes' table
       .then(userData => {
-          // Send books extracted from database in response
+          // Send notes extracted from database in response
           res.json(userData)
       })
       .catch(err => {
